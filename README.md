@@ -26,12 +26,7 @@ A aplicação está configurada para usar SQL Server Express por padrão:
 Server=localhost\SQLEXPRESS;Database=SistemaAlmoxarifado
 ```
 
-### Outras Configurações
-Edite o arquivo `Models\AlmoxarifadoDbContext.cs` e escolha uma das opções:
-- **OPÇÃO 1**: SQL Server padrão (localhost)
-- **OPÇÃO 2**: SQL Server Express (localhost\SQLEXPRESS) - Ativa
-- **OPÇÃO 3**: Servidor específico
-- **OPÇÃO 4**: Com usuário e senha
+
 
 ## Funcionalidades
 
