@@ -2,6 +2,8 @@
 
 ## Fluxo de Inicialização do Sistema
 
+Este fluxo demonstra como o sistema inicializa e configura o banco de dados automaticamente ao ser executado pela primeira vez. O processo verifica se o banco existe, cria a estrutura necessária e oferece a opção de popular com dados de exemplo para facilitar os testes iniciais.
+
 ```mermaid
 sequenceDiagram
     participant U as Usuário
@@ -43,6 +45,8 @@ sequenceDiagram
 ---
 
 ## Fluxo de Cadastro de Material
+
+Este fluxo ilustra o processo completo de cadastramento de um novo material no sistema. Inclui validação de dados, verificação de duplicidade de código e atualização automática da listagem após o cadastro bem-sucedido.
 
 ```mermaid
 sequenceDiagram
@@ -90,6 +94,8 @@ sequenceDiagram
 ---
 
 ## Fluxo de Entrada de Material
+
+Este fluxo mostra como é registrada a entrada de materiais no estoque, incluindo informações sobre fornecedor, lote e validade. O sistema atualiza automaticamente o estoque disponível através de uma transação que garante a integridade dos dados.
 
 ```mermaid
 sequenceDiagram
@@ -145,6 +151,8 @@ sequenceDiagram
 ---
 
 ## Fluxo de Saída de Material
+
+Este fluxo detalha o processo de retirada de materiais do estoque, com validação de quantidade disponível. O sistema verifica se há estoque suficiente, registra a movimentação e emite alertas caso o estoque fique abaixo do mínimo estabelecido.
 
 ```mermaid
 sequenceDiagram
@@ -206,6 +214,8 @@ sequenceDiagram
 
 ## Fluxo de Ajuste de Estoque
 
+Este fluxo apresenta o processo de ajuste manual de estoque, geralmente utilizado para correções de inventário. Exige justificativa obrigatória para manter a rastreabilidade e auditoria das alterações realizadas no sistema.
+
 ```mermaid
 sequenceDiagram
     participant U as Usuário
@@ -260,6 +270,8 @@ sequenceDiagram
 
 ## Fluxo de Relatório de Ponto de Pedido
 
+Este fluxo demonstra como o sistema identifica e exibe materiais que estão com estoque abaixo do mínimo estabelecido. Permite aos gestores visualizar rapidamente quais itens precisam ser repostos, priorizando por classificação e urgência.
+
 ```mermaid
 sequenceDiagram
     participant U as Usuário
@@ -289,6 +301,8 @@ sequenceDiagram
 ---
 
 ## Fluxo de Histórico de Movimentações
+
+Este fluxo mostra como o sistema permite consultar todas as movimentações (entradas, saídas e ajustes) com diversos filtros. As consultas podem ser realizadas por tipo de movimentação, período específico ou material, facilitando auditorias e análises.
 
 ```mermaid
 sequenceDiagram
@@ -337,6 +351,8 @@ sequenceDiagram
 
 ## Fluxo de Teste de Conexão SQL
 
+Este fluxo apresenta a ferramenta de diagnóstico que permite verificar a conectividade com o SQL Server. O sistema testa a conexão, identifica problemas comuns e oferece soluções, além de permitir a criação do banco de dados diretamente pela interface.
+
 ```mermaid
 sequenceDiagram
     participant U as Usuário
@@ -363,7 +379,7 @@ sequenceDiagram
             SQL-->>EF: Lista de tabelas
             Form->>U: "? Conexão OK! Banco existe com X tabelas"
         else Banco não existe
-            Form->>U: "? Conexão OK! Mas banco não existe"
+            Form->>U: "?? Conexão OK! Mas banco não existe"
             Form->>U: Habilita botão "Criar Banco"
         end
     else Erro de conexão
@@ -373,7 +389,7 @@ sequenceDiagram
         alt Erro 53/-1 (Servidor não encontrado)
             Form->>U: "? Servidor não encontrado<br/>Sugestões: Verifique services.msc"
         else Erro 4060 (Banco não existe)
-            Form->>U: "? Banco não existe<br/>Clique em 'Criar Banco'"
+            Form->>U: "?? Banco não existe<br/>Clique em 'Criar Banco'"
         else Erro 18456 (Autenticação)
             Form->>U: "? Erro de autenticação<br/>Verifique usuário/senha"
         end
@@ -391,6 +407,8 @@ sequenceDiagram
 ---
 
 ## Fluxo de Busca e Filtro
+
+Este fluxo demonstra a funcionalidade de busca em tempo real disponível nas telas de listagem. O sistema filtra automaticamente os registros à medida que o usuário digita, sem necessidade de clicar em botões, proporcionando uma experiência ágil e intuitiva.
 
 ```mermaid
 sequenceDiagram
@@ -466,4 +484,3 @@ erDiagram
         string Justificativa
         datetime DataAjuste
     }
-```
